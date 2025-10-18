@@ -11,6 +11,6 @@ const pageTitle = "私のAstroブログ";
 <BaseLayout pageTitle={pageTitle}>
   <p>ここには、私がAstroを学んでいく旅の様子を投稿します。</p>
   <ul>
-    {allPost.map((post) => <BlogPost url={post.url} title={post.frontmatter.title} />)}
+    {allPost.map((post: any) => <BlogPost url={post.url} title={post.frontmatter.title} />)}
   </ul>
 </BaseLayout>
