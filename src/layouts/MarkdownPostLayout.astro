@@ -3,10 +3,14 @@ const { frontmatter } = Astro.props;
 import BaseLayout from "./BaseLayout.astro";
 ---
 <BaseLayout pageTitle={frontmatter.title}>
-<img src={frontmatter.image.url} alt={frontmatter.image.alt} width="300">
-<p>投稿日：{frontmatter.pubDate.toString().slice(0,10)}</p>
-<p>著者：{frontmatter.author}</p>
-<p><em>{frontmatter.description}</em></p>
-<p>タグ：{frontmatter.tags.join(' ')}</p>
-<slot />
+    <p><em>{frontmatter.description}</em></p>
+    <p>{frontmatter.pubDate.toString().slice(0,10)}</p>
+
+    <p>著者：{frontmatter.author}</p>
+
+    <img src={frontmatter.image.url} alt={frontmatter.image.alt} width="300">
+
+    <p>タグ：{frontmatter.tags.join(' ')}</p>
+    
+    <slot />
 </BaseLayout>
