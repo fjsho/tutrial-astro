@@ -6,21 +6,43 @@ import Footer from "../components/Footer.astro";
 const { pageTitle } = Astro.props;
 ---
 
+<!DOCTYPE html>
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="description" content="ITエンジニアの個人ブログ - スキルアップの記録、技術記事、ガジェット・読書ログの共有" />
     <title>{pageTitle}</title>
   </head>
   <body>
     <Header />
-    <h1>{pageTitle}</h1>
-    <slot />
+    <main class="container">
+      {pageTitle && <h1>{pageTitle}</h1>}
+      <slot />
+    </main>
     <Footer />
     <script>
       import "../scripts/menu.js";
     </script>
   </body>
 </html>
+
+<style>
+  main {
+    flex: 1;
+    background-color: var(--bg-primary);
+    border-radius: 8px;
+    padding: var(--spacing-xl);
+    margin: var(--spacing-md);
+    box-shadow: var(--shadow-sm);
+  }
+
+  @media screen and (max-width: 768px) {
+    main {
+      padding: var(--spacing-lg);
+      margin: var(--spacing-sm);
+    }
+  }
+</style>

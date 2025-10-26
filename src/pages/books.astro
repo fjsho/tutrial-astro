@@ -1,0 +1,83 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Card from "../components/Card.astro";
+
+const pageTitle = "Books";
+
+// サンプルデータ（将来的にはCMSやデータベースから取得）
+const books = [
+  {
+    title: "サンプル書籍 1",
+    description: "この本の簡単な紹介文です。読んだ感想や学びを記載します。",
+    image: "https://placehold.co/600x400/f9d77f/333333?text=Book+1",
+    url: "#",
+    category: "books" as const,
+    tags: ["技術書", "プログラミング"],
+    date: "2025-01-20",
+  },
+  {
+    title: "サンプル書籍 2",
+    description: "この本の簡単な紹介文です。読んだ感想や学びを記載します。",
+    image: "https://placehold.co/600x400/f9d77f/333333?text=Book+2",
+    url: "#",
+    category: "books" as const,
+    tags: ["ビジネス", "自己啓発"],
+    date: "2025-01-12",
+  },
+  {
+    title: "サンプル書籍 3",
+    description: "この本の簡単な紹介文です。読んだ感想や学びを記載します。",
+    image: "https://placehold.co/600x400/f9d77f/333333?text=Book+3",
+    url: "#",
+    category: "books" as const,
+    tags: ["デザイン", "UX"],
+    date: "2025-01-08",
+  },
+];
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <div class="intro">
+    <p>
+      読んだ本の感想やおすすめポイントをまとめています。エンジニアとしての学びや気づきを共有します。
+    </p>
+  </div>
+
+  <div class="card-grid">
+    {books.map((book) => (
+      <Card {...book} />
+    ))}
+  </div>
+</BaseLayout>
+
+<style>
+  .intro {
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+  }
+
+  .intro p {
+    margin: 0;
+    color: var(--text-secondary);
+    line-height: var(--line-height-relaxed);
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  @media screen and (max-width: 768px) {
+    .card-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+    }
+
+    .intro {
+      padding: var(--spacing-md);
+    }
+  }
+</style>

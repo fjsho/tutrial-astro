@@ -1,78 +1,107 @@
 ---
-import "../styles/global.css";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const pageTitle = "私について";
-
-const identity = {
-  firstName: "サラ",
-  country: "カナダ",
-  occupation: "開発者",
-  hobbies: ["読書", "ハイキング", "コーディング"],
-};
+const pageTitle = "About";
 
 const skills = [
   "HTML",
   "CSS",
   "JavaScript",
+  "TypeScript",
   "React",
   "Astro",
-  "ドキュメントの執筆",
+  "Node.js",
+  "Git",
 ];
-
-const happy = true;
-const finished = true;
-const goal = 3;
-
-const skillColor = "navy";
-const fontWeight = "bold";
-const textCase = "uppercase";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-    <style define:vars={{ skillColor, fontWeight, textCase }}>
-    .skill {
-      color: var(--skillColor);
-      font-weight: var(--fontWeight);
-      text-transform: var(--textCase);
-    }
-  </style>
+  <div class="about-content">
+    <section class="intro-section">
+      <h2>このブログについて</h2>
+      <p>
+        ITエンジニアとして日々学んでいることや、技術的な知見、興味のあるガジェットや読書の記録を共有するためのブログです。
+      </p>
+      <p>
+        プログラミングの学習記録やチュートリアル、実際に使ってみたツールやサービスのレビュー、読んだ技術書の感想などを発信しています。
+      </p>
+    </section>
 
-  <h2>... そして私の新しいAstroサイトについて!</h2>
+    <section class="skills-section">
+      <h2>スキル</h2>
+      <div class="skills-grid">
+        {skills.map((skill) => (
+          <span class="skill-badge">{skill}</span>
+        ))}
+      </div>
+    </section>
 
-  <p>私はAstroの入門チュートリアルを進めています。</p>
-  <p>
-    このサイトはチュートリアルを進めるにつれて更新されていきます。定期的にチェックして、私の旅の様子を見に来てください！
-  </p>
-
-  <p>以下は私に関する幾つかの事実です。</p>
-  <ul>
-    <li>私の名前は{identity.firstName}です。</li>
-    <li>
-      {identity.country}に住んでおり、{identity.occupation}として働いています。
-    </li>
-    {
-      identity.hobbies.length >= 2 && (
-        <li>
-          私の2つの趣味は{identity.hobbies[0]}と{identity.hobbies[1]}です。
-        </li>
-      )
-    }
-  </ul>
-  <p>私のスキルセットは以下の通りです。</p>
-  <ul>
-    {skills.map((skill) => <li class="skill">{skill}</li>)}
-  </ul>
-
-  {happy && <p>I am happy to be learning Astro! Astroを学べて幸せです！</p>}
-  {finished && <p> finished this tutorial! このチュートリアルを終えました！</p>}
-  {
-    goal === 3 ? (
-      <p>My goal is to finish in 3 days. 3日で終えるのが目標です。</p>
-    ) : (
-      <p>My goal is not 3 days. 3日が目標ではありません。</p>
-    )
-  }
+    <section class="contact-section">
+      <h2>お問い合わせ</h2>
+      <p>
+        記事に関するご質問やフィードバックは、SNSまたはGitHubからお気軽にご連絡ください。
+      </p>
+    </section>
+  </div>
 </BaseLayout>
+
+<style>
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2xl);
+  }
+
+  section {
+    padding: var(--spacing-lg);
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+  }
+
+  section h2 {
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-2xl);
+  }
+
+  section p {
+    color: var(--text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--spacing-md);
+  }
+
+  section p:last-child {
+    margin-bottom: 0;
+  }
+
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+  }
+
+  .skill-badge {
+    display: inline-block;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: var(--color-programming);
+    color: var(--text-inverse);
+    border-radius: 20px;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    transition: transform var(--transition-fast);
+  }
+
+  .skill-badge:hover {
+    transform: translateY(-2px);
+  }
+
+  @media screen and (max-width: 768px) {
+    section {
+      padding: var(--spacing-md);
+    }
+
+    section h2 {
+      font-size: var(--font-size-xl);
+    }
+  }
+</style>

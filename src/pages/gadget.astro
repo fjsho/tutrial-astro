@@ -1,0 +1,83 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Card from "../components/Card.astro";
+
+const pageTitle = "Gadget";
+
+// サンプルデータ（将来的にはCMSやデータベースから取得）
+const gadgets = [
+  {
+    title: "サンプルガジェット 1",
+    description: "このガジェットの簡単な説明文です。実際の使用感やレビューを記載します。",
+    image: "https://placehold.co/600x400/7dc2bb/ffffff?text=Gadget+1",
+    url: "#",
+    category: "gadget" as const,
+    tags: ["PC周辺機器", "レビュー"],
+    date: "2025-01-15",
+  },
+  {
+    title: "サンプルガジェット 2",
+    description: "このガジェットの簡単な説明文です。実際の使用感やレビューを記載します。",
+    image: "https://placehold.co/600x400/7dc2bb/ffffff?text=Gadget+2",
+    url: "#",
+    category: "gadget" as const,
+    tags: ["スマートフォン", "おすすめ"],
+    date: "2025-01-10",
+  },
+  {
+    title: "サンプルガジェット 3",
+    description: "このガジェットの簡単な説明文です。実際の使用感やレビューを記載します。",
+    image: "https://placehold.co/600x400/7dc2bb/ffffff?text=Gadget+3",
+    url: "#",
+    category: "gadget" as const,
+    tags: ["イヤホン", "音楽"],
+    date: "2025-01-05",
+  },
+];
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <div class="intro">
+    <p>
+      お気に入りのガジェットやレビューを紹介しています。気になるアイテムがあれば、詳細をチェックしてください。
+    </p>
+  </div>
+
+  <div class="card-grid">
+    {gadgets.map((gadget) => (
+      <Card {...gadget} />
+    ))}
+  </div>
+</BaseLayout>
+
+<style>
+  .intro {
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+  }
+
+  .intro p {
+    margin: 0;
+    color: var(--text-secondary);
+    line-height: var(--line-height-relaxed);
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  @media screen and (max-width: 768px) {
+    .card-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+    }
+
+    .intro {
+      padding: var(--spacing-md);
+    }
+  }
+</style>

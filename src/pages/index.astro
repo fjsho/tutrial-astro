@@ -1,10 +1,107 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Greeting from "../components/Greeting";
-const pageTitle = "私のAstroサイト";
+
+const pageTitle = "Welcome";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <h2>私の素晴らしいブログのサブタイトル</h2>
-  <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
+  <div class="hero">
+    <p class="hero-description">
+      ITエンジニアとしての学びと成長を記録するブログです。<br />
+      プログラミング、ガジェット、読書のログを共有しています。
+    </p>
+  </div>
+
+  <section class="features">
+    <div class="feature-card">
+      <h2>Blog</h2>
+      <p>技術記事やプログラミングに関する情報を発信しています。</p>
+      <a href="/blog" class="feature-link">記事を見る →</a>
+    </div>
+
+    <div class="feature-card">
+      <h2>Gadget</h2>
+      <p>お気に入りのガジェットやレビューを紹介しています。</p>
+      <a href="/gadget" class="feature-link">ガジェットを見る →</a>
+    </div>
+
+    <div class="feature-card">
+      <h2>Books</h2>
+      <p>読んだ本の感想や学びをまとめています。</p>
+      <a href="/books" class="feature-link">読書ログを見る →</a>
+    </div>
+  </section>
 </BaseLayout>
+
+<style>
+  .hero {
+    text-align: center;
+    padding: var(--spacing-3xl) 0;
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .hero-description {
+    font-size: var(--font-size-lg);
+    color: var(--text-secondary);
+    line-height: var(--line-height-relaxed);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .feature-card {
+    padding: var(--spacing-xl);
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .feature-card h2 {
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-2xl);
+  }
+
+  .feature-card p {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-md);
+    line-height: var(--line-height-relaxed);
+  }
+
+  .feature-link {
+    color: var(--color-link);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+    transition: color var(--transition-fast);
+  }
+
+  .feature-link:hover {
+    color: var(--color-link-hover);
+    text-decoration: underline;
+  }
+
+  @media screen and (max-width: 768px) {
+    .hero {
+      padding: var(--spacing-2xl) 0;
+    }
+
+    .hero-description {
+      font-size: var(--font-size-base);
+    }
+
+    .features {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

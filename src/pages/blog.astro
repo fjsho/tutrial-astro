@@ -1,16 +1,50 @@
 ---
-import "../styles/global.css";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import BlogPost from "../components/BlogPost.astro";
 const matches = import.meta.glob('../pages/posts/*.md',{eager: true});
 const allPost = Object.values(matches);
 
-const pageTitle = "私のAstroブログ";
+const pageTitle = "Blog";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <p>ここには、私がAstroを学んでいく旅の様子を投稿します。</p>
-  <ul>
+  <div class="intro">
+    <p>
+      プログラミングや技術に関する記事を投稿しています。学んだことや気づきを共有します。
+    </p>
+  </div>
+
+  <ul class="blog-list">
     {allPost.map((post: any) => <BlogPost url={post.url} title={post.frontmatter.title} />)}
   </ul>
 </BaseLayout>
+
+<style>
+  .intro {
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+  }
+
+  .intro p {
+    margin: 0;
+    color: var(--text-secondary);
+    line-height: var(--line-height-relaxed);
+  }
+
+  .blog-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  @media screen and (max-width: 768px) {
+    .intro {
+      padding: var(--spacing-md);
+    }
+  }
+</style>

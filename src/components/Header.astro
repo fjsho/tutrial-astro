@@ -2,12 +2,102 @@
 import Hamburger from "./Hamburger.astro";
 import Navigation from "./Navigation.astro";
 import ThemeIcon from "./ThemeIcon.astro";
+import Social from "./Social.astro";
 ---
 
 <header>
-  <nav>
-    <Hamburger />
-    <ThemeIcon />
-    <Navigation />
-  </nav>
+  <div class="header-container">
+    <div class="header-left">
+      <Hamburger />
+      <a href="/" class="site-logo">
+        <span class="logo-text">My Blog</span>
+      </a>
+    </div>
+
+    <div class="header-center">
+      <Navigation />
+    </div>
+
+    <div class="header-right">
+      <div class="social-icons">
+        <Social platform="twitter" username="yourhandle" />
+        <Social platform="github" username="yourusername" />
+      </div>
+      <ThemeIcon />
+    </div>
+  </div>
 </header>
+
+<style>
+  header {
+    background-color: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .header-container {
+    max-width: var(--max-width-wide);
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+  }
+
+  .site-logo {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-text {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-primary);
+    transition: color var(--transition-fast);
+  }
+
+  .site-logo:hover .logo-text {
+    color: var(--color-link);
+  }
+
+  .header-center {
+    flex: 1;
+    display: none;
+    justify-content: center;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
+  .social-icons {
+    display: none;
+    align-items: center;
+    gap: var(--spacing-xs);
+  }
+
+  /* デスクトップ表示 */
+  @media screen and (min-width: 768px) {
+    .header-center {
+      display: flex;
+    }
+
+    .social-icons {
+      display: flex;
+    }
+  }
+</style>

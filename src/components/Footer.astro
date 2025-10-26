@@ -2,16 +2,131 @@
 import Social from "./Social.astro";
 ---
 
+<footer>
+  <div class="footer-container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3 class="footer-title">My Blog</h3>
+        <p class="footer-description">
+          ITエンジニアの個人ブログ。スキルアップの記録、技術記事、ガジェット・読書ログを共有しています。
+        </p>
+      </div>
+
+      <div class="footer-section">
+        <h4 class="footer-heading">リンク</h4>
+        <nav class="footer-nav">
+          <a href="/about">About</a>
+          <a href="/blog">Blog</a>
+          <a href="/gadget">Gadget</a>
+          <a href="/books">Books</a>
+        </nav>
+      </div>
+
+      <div class="footer-section">
+        <h4 class="footer-heading">SNS</h4>
+        <div class="footer-social">
+          <Social platform="twitter" username="yourhandle" />
+          <Social platform="github" username="yourusername" />
+          <Social platform="youtube" username="yourchannel" />
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; {new Date().getFullYear()} My Blog. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
 <style>
   footer {
+    background-color: var(--bg-primary);
+    border-top: 1px solid var(--border-color);
+    margin-top: auto;
+  }
+
+  .footer-container {
+    max-width: var(--max-width-wide);
+    margin: 0 auto;
+    padding: var(--spacing-2xl) var(--spacing-md) var(--spacing-lg);
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .footer-section {
     display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .footer-title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  .footer-description {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin: 0;
+  }
+
+  .footer-heading {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  .footer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .footer-nav a {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .footer-nav a:hover {
+    color: var(--color-link);
+  }
+
+  .footer-social {
+    display: flex;
+    gap: var(--spacing-xs);
+  }
+
+  .footer-bottom {
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+  }
+
+  .footer-bottom p {
+    margin: 0;
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+  }
+
+  @media screen and (max-width: 768px) {
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+    }
+
+    .footer-container {
+      padding: var(--spacing-xl) var(--spacing-md) var(--spacing-md);
+    }
   }
 </style>
-
-<footer>
-  <Social platform="twitter" username="astrodotbuild" />
-  <Social platform="github" username="withastro" />
-  <Social platform="youtube" username="astrodotbuild" />
-</footer>
