@@ -1,27 +1,38 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
-title: "私の最初のブログ記事"
-author: "Astro 学習者"
-description: "これは私の新しい Astro ブログの最初の記事です"
+title: "Astroで静的サイトを構築する"
+author: "Tech Blog"
+description: "Astroを使った静的サイト生成の基礎と、実際のプロジェクトでの活用方法について解説します"
 image:
   url: "https://docs.astro.build/assets/full-logo-dark.png"
-  alt: "Astro のロゴ"
-pubDate: 2025-10-05
-tags: ["astro", "ブログ", "公開学習"]
+  alt: "Astroのロゴ"
+pubDate: 2024-10-15
+tags: ["Astro", "フロントエンド", "静的サイト生成"]
 ---
 
-Astro の学習について私の _新しいブログ_ へようこそ！ここでは新しいウェブサイトを作りながら、私の学習過程を共有します。
+Astroは、コンテンツ重視のWebサイトを構築するための最新の静的サイトジェネレーターです。このブログでは、Astroの特徴と実際の活用方法について紹介します。
 
-## 達成したこと
+## Astroの特徴
 
-1. **Astro のインストール**: まず新しい Astro プロジェクトを作成（`pnpm create astro@latest`）し、Netify でオンラインアカウントを設定しました。
+Astroには以下のような特徴があります:
 
-   - [A step-by-step guide to deploying on Netlify](https://www.netlify.com/blog/2016/09/29/a-step-by-step-guide-deploying-on-netlify/)
+1. **ゼロJSがデフォルト**: 必要な部分にのみJavaScriptを送信
+2. **UI非依存**: React、Vue、Svelteなど、好きなフレームワークを使用可能
+3. **高速なビルド**: 最適化されたビルドプロセス
 
-2. **ページの作成**: 次に、新しい`.astro`ファイルを作成し、それを`src/pages/`フォルダに配置することで、ページを作成する方法を学びました。
+## 実際の使用例
 
-3. **ブログ記事の作成**: これが私の最初のブログ記事です！Astro ページと Markdown の記事があります！
+このブログサイト自体もAstroで構築されています。Markdownでコンテンツを管理し、Astroコンポーネントでレイアウトを構成することで、効率的な開発が可能です。
 
-## 次の目標
+```astro
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout pageTitle="Example">
+  <h1>Hello, Astro!</h1>
+</BaseLayout>
+```
 
-Astro チュートリアルを終え、さらに記事を追加していきます。これからもこの場所をご覧ください。
+## まとめ
+
+Astroは、パフォーマンスと開発者体験を両立した優れたツールです。ブログやドキュメントサイトなど、コンテンツ中心のサイト構築に最適です。

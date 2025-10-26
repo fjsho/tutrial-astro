@@ -1,17 +1,29 @@
 ---
-import Social from "./Social.astro";
 ---
+
+<footer>
+  <div class="footer-content">
+    <p>&copy; {new Date().getFullYear()} Tech Blog. All rights reserved.</p>
+  </div>
+</footer>
 
 <style>
   footer {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
+    margin-top: 4rem;
+    padding: 2rem 1rem;
+    background-color: var(--color-bg-section);
+    border-top: 1px solid #ddd;
+  }
+
+  .footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  p {
+    margin: 0;
+    color: var(--color-text-light);
+    font-size: 0.9rem;
   }
 </style>
-
-<footer>
-  <Social platform="twitter" username="astrodotbuild" />
-  <Social platform="github" username="withastro" />
-  <Social platform="youtube" username="astrodotbuild" />
-</footer>

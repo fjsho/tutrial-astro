@@ -1,78 +1,139 @@
 ---
-import "../styles/global.css";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const pageTitle = "私について";
+const pageTitle = "About";
 
-const identity = {
-  firstName: "サラ",
-  country: "カナダ",
-  occupation: "開発者",
-  hobbies: ["読書", "ハイキング", "コーディング"],
+const profile = {
+  name: "Tech Blog 運営者",
+  occupation: "ITエンジニア",
+  specialties: ["Web開発", "フロントエンド", "バックエンド"],
 };
 
 const skills = [
-  "HTML",
-  "CSS",
-  "JavaScript",
+  "JavaScript/TypeScript",
   "React",
-  "Astro",
-  "ドキュメントの執筆",
+  "Node.js",
+  "Python",
+  "AWS",
+  "Docker",
 ];
-
-const happy = true;
-const finished = true;
-const goal = 3;
-
-const skillColor = "navy";
-const fontWeight = "bold";
-const textCase = "uppercase";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-    <style define:vars={{ skillColor, fontWeight, textCase }}>
-    .skill {
-      color: var(--skillColor);
-      font-weight: var(--fontWeight);
-      text-transform: var(--textCase);
-    }
-  </style>
+  <section class="profile">
+    <h2>プロフィール</h2>
+    <p>
+      ITエンジニアとして日々の学びや経験を記録しています。<br />
+      技術的な課題の解決方法や、役立つガジェット・書籍の情報を共有することで、
+      他のエンジニアの方々の参考になれば嬉しいです。
+    </p>
 
-  <h2>... そして私の新しいAstroサイトについて!</h2>
+    <div class="profile-details">
+      <div class="detail-item">
+        <h3>専門分野</h3>
+        <ul>
+          {profile.specialties.map((specialty) => (
+            <li>{specialty}</li>
+          ))}
+        </ul>
+      </div>
 
-  <p>私はAstroの入門チュートリアルを進めています。</p>
-  <p>
-    このサイトはチュートリアルを進めるにつれて更新されていきます。定期的にチェックして、私の旅の様子を見に来てください！
-  </p>
+      <div class="detail-item">
+        <h3>主なスキル</h3>
+        <ul class="skills-list">
+          {skills.map((skill) => (
+            <li class="skill-tag">{skill}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
 
-  <p>以下は私に関する幾つかの事実です。</p>
-  <ul>
-    <li>私の名前は{identity.firstName}です。</li>
-    <li>
-      {identity.country}に住んでおり、{identity.occupation}として働いています。
-    </li>
-    {
-      identity.hobbies.length >= 2 && (
-        <li>
-          私の2つの趣味は{identity.hobbies[0]}と{identity.hobbies[1]}です。
-        </li>
-      )
-    }
-  </ul>
-  <p>私のスキルセットは以下の通りです。</p>
-  <ul>
-    {skills.map((skill) => <li class="skill">{skill}</li>)}
-  </ul>
-
-  {happy && <p>I am happy to be learning Astro! Astroを学べて幸せです！</p>}
-  {finished && <p> finished this tutorial! このチュートリアルを終えました！</p>}
-  {
-    goal === 3 ? (
-      <p>My goal is to finish in 3 days. 3日で終えるのが目標です。</p>
-    ) : (
-      <p>My goal is not 3 days. 3日が目標ではありません。</p>
-    )
-  }
+  <section class="contact">
+    <h2>コンタクト</h2>
+    <p>
+      記事へのフィードバックや質問などがありましたら、
+      各種SNSからお気軽にご連絡ください。
+    </p>
+  </section>
 </BaseLayout>
+
+<style>
+  .profile {
+    margin-bottom: 3rem;
+  }
+
+  .profile > p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--color-text-light);
+    margin: 1.5rem 0;
+  }
+
+  .profile-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .detail-item {
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .detail-item h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    color: var(--color-programming);
+  }
+
+  .detail-item ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .detail-item li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--color-bg-section);
+  }
+
+  .detail-item li:last-child {
+    border-bottom: none;
+  }
+
+  .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .skill-tag {
+    padding: 0.5rem 1rem !important;
+    background-color: var(--color-programming);
+    color: white;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: none !important;
+  }
+
+  .contact {
+    padding: 2rem;
+    background-color: var(--color-bg-section);
+    border-radius: 8px;
+  }
+
+  .contact h2 {
+    margin-top: 0;
+  }
+
+  .contact p {
+    color: var(--color-text-light);
+    line-height: 1.8;
+  }
+</style>

@@ -1,10 +1,105 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Greeting from "../components/Greeting";
-const pageTitle = "私のAstroサイト";
+const pageTitle = "Tech Blog";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <h2>私の素晴らしいブログのサブタイトル</h2>
-  <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
+  <section class="hero">
+    <p class="lead">
+      ITエンジニアとしての学びと経験を記録するブログです。<br />
+      技術記事、ガジェットレビュー、読書記録などを発信しています。
+    </p>
+  </section>
+
+  <section class="sections">
+    <div class="section-card">
+      <h2>Blog</h2>
+      <p>技術的な学びやプロジェクトの記録を共有しています。</p>
+      <a href="/blog" class="section-link">記事を読む →</a>
+    </div>
+
+    <div class="section-card">
+      <h2>Gadget</h2>
+      <p>開発環境を支えるガジェットやツールを紹介しています。</p>
+      <a href="/gadget" class="section-link">ガジェットを見る →</a>
+    </div>
+
+    <div class="section-card">
+      <h2>Books</h2>
+      <p>エンジニアとして成長するために読んだ本をまとめています。</p>
+      <a href="/books" class="section-link">読書記録を見る →</a>
+    </div>
+  </section>
 </BaseLayout>
+
+<style>
+  .hero {
+    padding: 3rem 0;
+    text-align: center;
+  }
+
+  .lead {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--color-text-light);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .sections {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .section-card {
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .section-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  .section-card h2 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    font-size: 1.5rem;
+    color: var(--color-programming);
+  }
+
+  .section-card p {
+    color: var(--color-text-light);
+    margin-bottom: 1.5rem;
+  }
+
+  .section-link {
+    color: var(--color-programming);
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-block;
+  }
+
+  .section-link:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 2rem 0;
+    }
+
+    .lead {
+      font-size: 1.1rem;
+    }
+
+    .sections {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "title": "MacBook Pro 14インチ M3 Pro",
+    "image": "https://via.placeholder.com/400x300?text=MacBook+Pro",
+    "comment": "開発環境として最高のパフォーマンス。バッテリー持続時間も優秀で、外出先でも快適に作業できます。",
+    "category": "PC",
+    "tags": ["Apple", "ノートPC", "開発環境"],
+    "purchaseDate": "2024-03-15",
+    "reviewUrl": null,
+    "affiliateUrl": "https://www.amazon.co.jp/"
+  },
+  {
+    "id": 2,
+    "title": "HHKB Professional HYBRID Type-S",
+    "image": "https://via.placeholder.com/400x300?text=HHKB",
+    "comment": "静電容量無接点方式のキーボード。タイピング音が静かで、長時間のコーディングでも疲れにくいです。",
+    "category": "キーボード",
+    "tags": ["HHKB", "キーボード", "静音"],
+    "purchaseDate": "2024-01-20",
+    "reviewUrl": null,
+    "affiliateUrl": "https://www.amazon.co.jp/"
+  },
+  {
+    "id": 3,
+    "title": "LG UltraFine 4K Display",
+    "image": "https://via.placeholder.com/400x300?text=LG+4K+Display",
+    "comment": "MacとUSB-C一本で接続可能な4Kディスプレイ。色再現性が高く、デザイン作業にも最適。",
+    "category": "ディスプレイ",
+    "tags": ["LG", "4K", "USB-C"],
+    "purchaseDate": "2024-02-10",
+    "reviewUrl": null,
+    "affiliateUrl": "https://www.amazon.co.jp/"
+  },
+  {
+    "id": 4,
+    "title": "Anker PowerConf C200",
+    "image": "https://via.placeholder.com/400x300?text=Anker+Webcam",
+    "comment": "リモート会議用に購入。2Kの高画質で、オートフォーカス機能も優秀。コスパが良いです。",
+    "category": "周辺機器",
+    "tags": ["Anker", "Webカメラ", "リモートワーク"],
+    "purchaseDate": "2023-11-05",
+    "reviewUrl": null,
+    "affiliateUrl": "https://www.amazon.co.jp/"
+  }
+]

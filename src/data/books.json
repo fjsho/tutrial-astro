@@ -1,0 +1,54 @@
+[
+  {
+    "id": 1,
+    "title": "リーダブルコード",
+    "author": "Dustin Boswell, Trevor Foucher",
+    "image": "https://via.placeholder.com/300x400?text=Readable+Code",
+    "comment": "より良いコードを書くための普遍的な原則が学べます。エンジニア必読の一冊。",
+    "category": "技術書",
+    "tags": ["コーディング", "リファクタリング", "ベストプラクティス"],
+    "readDate": "2023-06-10",
+    "rating": 5,
+    "reviewUrl": null,
+    "affiliateUrl": "https://www.amazon.co.jp/"
+  },
+  {
+    "id": 2,
+    "title": "ソフトウェアアーキテクチャの基礎",
+    "author": "Mark Richards, Neal Ford",
+    "image": "https://via.placeholder.com/300x400?text=Software+Architecture",
+    "comment": "モダンなアーキテクチャパターンを網羅的に学べる良書。設計の判断基準が明確になります。",
+    "category": "技術書",
+    "tags": ["アーキテクチャ", "設計", "パターン"],
+    "readDate": "2024-01-15",
+    "rating": 5,
+    "reviewUrl": null,
+    "affiliateUrl": "https://www.amazon.co.jp/"
+  },
+  {
+    "id": 3,
+    "title": "JavaScript本格入門 改訂3版",
+    "author": "山田祥寛",
+    "image": "https://via.placeholder.com/300x400?text=JavaScript",
+    "comment": "JavaScriptの基礎から最新仕様まで体系的に学べます。リファレンスとしても優秀。",
+    "category": "技術書",
+    "tags": ["JavaScript", "フロントエンド", "入門"],
+    "readDate": "2023-09-20",
+    "rating": 4,
+    "reviewUrl": null,
+    "affiliateUrl": "https://www.amazon.co.jp/"
+  },
+  {
+    "id": 4,
+    "title": "スタッフエンジニア",
+    "author": "Will Larson",
+    "image": "https://via.placeholder.com/300x400?text=Staff+Engineer",
+    "comment": "シニアエンジニア以上を目指す人のキャリア指南書。技術リーダーシップについて深く考えさせられます。",
+    "category": "キャリア",
+    "tags": ["キャリア", "リーダーシップ", "エンジニアリング"],
+    "readDate": "2024-02-28",
+    "rating": 5,
+    "reviewUrl": null,
+    "affiliateUrl": "https://www.amazon.co.jp/"
+  }
+]

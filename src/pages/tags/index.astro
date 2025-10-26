@@ -3,33 +3,86 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
 const allPosts = Object.values(import.meta.glob('../posts/*.md', { eager: true }));
 const tags = [...new Set(allPosts.map((post: any) => post.frontmatter.tags).flat())];
-const pageTitle = "タグインデックス";
+const pageTitle = "Tags";
+
+// タグごとの記事数をカウント
+const tagCounts = tags.map(tag => ({
+    tag,
+    count: allPosts.filter((post: any) => post.frontmatter.tags.includes(tag)).length
+}));
 ---
 <BaseLayout pageTitle={pageTitle}>
-    <ul>
-        <div class="tags">
-            {tags.map((tag)=> (
-                <p class="tag"><a href={`/tags/${tag}`}>{tag}</a></p>
-            ))}
-        </div>
-    </ul>
+    <p class="intro">記事のタグ一覧です。興味のあるトピックから記事を探せます。</p>
+
+    <div class="tags-grid">
+        {tagCounts.map(({ tag, count }) => (
+            <a href={`/tags/${tag}`} class="tag-card">
+                <span class="tag-name">{tag}</span>
+                <span class="tag-count">{count} 件</span>
+            </a>
+        ))}
+    </div>
+
+    <div class="back-link-container">
+        <a href="/blog" class="back-link">← ブログ一覧に戻る</a>
+    </div>
 </BaseLayout>
+
 <style>
-    a {
-      color: #00539F;
+    .intro {
+        font-size: 1.1rem;
+        color: var(--color-text-light);
+        margin-bottom: 2rem;
     }
-  
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
+
+    .tags-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-bottom: 3rem;
     }
-  
-    .tag {
-      margin: 0.25em;
-      border: dotted 1px #a1a1a1;
-      border-radius: .5em;
-      padding: .5em 1em;
-      font-size: 1.15em;
-      background-color: #F8FCFD;
+
+    .tag-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1.5rem;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        text-decoration: none;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .tag-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .tag-name {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--color-programming);
+        margin-bottom: 0.5rem;
+    }
+
+    .tag-count {
+        font-size: 0.9rem;
+        color: var(--color-text-light);
+    }
+
+    .back-link-container {
+        padding-top: 2rem;
+        border-top: 1px solid var(--color-bg-section);
+    }
+
+    .back-link {
+        color: var(--color-programming);
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .back-link:hover {
+        text-decoration: underline;
     }
 </style>

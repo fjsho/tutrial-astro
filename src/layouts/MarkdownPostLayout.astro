@@ -3,37 +3,163 @@ const { frontmatter } = Astro.props;
 import BaseLayout from "./BaseLayout.astro";
 ---
 <BaseLayout pageTitle={frontmatter.title}>
-    <p><em>{frontmatter.description}</em></p>
-    <p>{frontmatter.pubDate.toString().slice(0,10)}</p>
+    <article class="post">
+        <div class="post-meta">
+            <p class="post-date">{new Date(frontmatter.pubDate).toLocaleDateString('ja-JP')}</p>
+            {frontmatter.author && <p class="post-author">著者: {frontmatter.author}</p>}
+        </div>
 
-    <p>著者：{frontmatter.author}</p>
+        {frontmatter.image && (
+            <img
+                src={frontmatter.image.url}
+                alt={frontmatter.image.alt}
+                class="post-image"
+            />
+        )}
 
-    <img src={frontmatter.image.url} alt={frontmatter.image.alt} width="300" />
+        <p class="post-description">{frontmatter.description}</p>
 
-    <div class="tags">
-        {frontmatter.tags.map((tag: string) => (
-            <p class="tag"><a href={`/tags/${tag}`}>{tag}</a></p>
-        ))}
-    </div>
+        <div class="tags">
+            {frontmatter.tags.map((tag: string) => (
+                <a href={`/tags/${tag}`} class="tag">{tag}</a>
+            ))}
+        </div>
 
-    <slot />
+        <div class="post-content">
+            <slot />
+        </div>
+
+        <div class="post-footer">
+            <a href="/blog" class="back-link">← ブログ一覧に戻る</a>
+        </div>
+    </article>
 </BaseLayout>
+
 <style>
-    a {
-      color: #00539F;
+    .post {
+        max-width: 720px;
+        margin: 0 auto;
     }
-  
+
+    .post-meta {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--color-bg-section);
+    }
+
+    .post-date {
+        font-size: 0.95rem;
+        color: var(--color-text-light);
+        margin: 0;
+    }
+
+    .post-author {
+        font-size: 0.95rem;
+        color: var(--color-text-light);
+        margin: 0;
+    }
+
+    .post-image {
+        width: 100%;
+        max-height: 400px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+    }
+
+    .post-description {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: var(--color-text-light);
+        font-style: italic;
+        margin: 0 0 1.5rem;
+        padding: 1rem;
+        background-color: var(--color-bg-section);
+        border-left: 4px solid var(--color-programming);
+        border-radius: 4px;
+    }
+
     .tags {
-      display: flex;
-      flex-wrap: wrap;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
     }
-  
+
     .tag {
-      margin: 0.25em;
-      border: dotted 1px #a1a1a1;
-      border-radius: .5em;
-      padding: .5em 1em;
-      font-size: 1.15em;
-      background-color: #F8FCFD;
+        padding: 0.4rem 0.9rem;
+        background-color: var(--color-programming);
+        color: white;
+        border-radius: 4px;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: opacity 0.2s;
+    }
+
+    .tag:hover {
+        opacity: 0.8;
+    }
+
+    .post-content {
+        line-height: 1.8;
+        font-size: 1.05rem;
+    }
+
+    .post-content :global(h2) {
+        margin-top: 2.5rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--color-bg-section);
+    }
+
+    .post-content :global(h3) {
+        margin-top: 2rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .post-content :global(p) {
+        margin: 1rem 0;
+    }
+
+    .post-content :global(ul),
+    .post-content :global(ol) {
+        margin: 1rem 0;
+        padding-left: 2rem;
+    }
+
+    .post-content :global(li) {
+        margin: 0.5rem 0;
+    }
+
+    .post-content :global(a) {
+        color: var(--color-programming);
+        text-decoration: underline;
+    }
+
+    .post-content :global(blockquote) {
+        margin: 1.5rem 0;
+        padding: 1rem 1.5rem;
+        background-color: var(--color-bg-section);
+        border-left: 4px solid var(--color-programming);
+        font-style: italic;
+    }
+
+    .post-footer {
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--color-bg-section);
+    }
+
+    .back-link {
+        color: var(--color-programming);
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .back-link:hover {
+        text-decoration: underline;
     }
 </style>    
