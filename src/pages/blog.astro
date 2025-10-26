@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import BlogPost from "../components/BlogPost.astro";
+import Card from "../components/Card.astro";
 const matches = import.meta.glob('../pages/posts/*.md',{eager: true});
 const allPost = Object.values(matches);
 
@@ -14,9 +14,19 @@ const pageTitle = "Blog";
     </p>
   </div>
 
-  <ul class="blog-list">
-    {allPost.map((post: any) => <BlogPost url={post.url} title={post.frontmatter.title} />)}
-  </ul>
+  <div class="card-grid">
+    {allPost.map((post: any) => (
+      <Card
+        title={post.frontmatter.title}
+        description={post.frontmatter.description}
+        image={post.frontmatter.image?.url}
+        url={post.url}
+        category="programming"
+        tags={post.frontmatter.tags || []}
+        date={post.frontmatter.pubDate}
+      />
+    ))}
+  </div>
 </BaseLayout>
 
 <style>
@@ -33,16 +43,18 @@ const pageTitle = "Blog";
     line-height: var(--line-height-relaxed);
   }
 
-  .blog-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-md);
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
   }
 
   @media screen and (max-width: 768px) {
+    .card-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+    }
+
     .intro {
       padding: var(--spacing-md);
     }
