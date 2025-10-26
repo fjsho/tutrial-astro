@@ -5,6 +5,15 @@ const matches = import.meta.glob('../pages/posts/*.md',{eager: true});
 const allPost = Object.values(matches);
 
 const pageTitle = "Blog";
+
+// 日付をyyyy-mm-dd形式にフォーマット
+const formatDate = (date: Date | string) => {
+  const d = new Date(date);
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+};
 ---
 
 <BaseLayout pageTitle={pageTitle}>
@@ -23,7 +32,7 @@ const pageTitle = "Blog";
         url={post.url}
         category="programming"
         tags={post.frontmatter.tags || []}
-        date={post.frontmatter.pubDate}
+        date={formatDate(post.frontmatter.pubDate)}
       />
     ))}
   </div>
